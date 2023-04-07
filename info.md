@@ -18,54 +18,56 @@ ESLINT_NO_DEV_ERRORS=true
 
 <!-- Необходимо вставить этот код от "scripts" до "browserslist": -->
 
+```json lines
 "scripts": {
-"start": "react-scripts start",
-"build": "react-scripts build",
-"test": "react-scripts test",
-"eject": "react-scripts eject",
-"typecheck": "tsc",
-"lint": "eslint ."
-},
-"eslintConfig": {
-"extends": [
-"react-app",
-"react-app/jest",
-"airbnb",
-"airbnb-typescript"
-],
-"rules": {
-"react/jsx-indent": 0,
-"implicit-arrow-linebreak": 0,
-"@typescript-eslint/indent": 0,
-"@typescript-eslint/comma-dangle": 0,
-"function-paren-newline": 0,
-"no-param-reassign": 0,
-"no-nested-ternary": 0,
-"no-confusing-arrow": 0,
-"operator-linebreak": 0,
-"jsx-a11y/anchor-is-valid": 0,
-"jsx-a11y/label-has-associated-control": 0,
-"react/jsx-one-expression-per-line": 0,
-"jsx-a11y/click-events-have-key-events": 0,
-"default-case": 0,
-"@typescript-eslint/default-param-last": 0,
-"@typescript-eslint/switch-exhaustiveness-check": 2,
-"@typescript-eslint/explicit-function-return-type": [
-2,
-{
-"allowExpressions": true,
-"allowTypedFunctionExpressions": true,
-"allowHigherOrderFunctions": true,
-"allowDirectConstAssertionInArrowFunctions": true
-}
-]
-},
-"parserOptions": {
-"project": [
-"tsconfig.json"
-]
-}
-},
+    "start": "ESLINT_NO_DEV_ERRORS=true react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "airbnb",
+      "airbnb-typescript"
+    ],
+    "rules": {
+      "react/jsx-indent": 0,
+      "implicit-arrow-linebreak": 0,
+      "@typescript-eslint/indent": 0,
+      "@typescript-eslint/comma-dangle": 0,
+      "function-paren-newline": 0,
+      "no-param-reassign": 0,
+      "no-nested-ternary": 0,
+      "no-confusing-arrow": 0,
+      "operator-linebreak": 0,
+      "jsx-a11y/anchor-is-valid": 0,
+      "jsx-a11y/label-has-associated-control": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "jsx-a11y/click-events-have-key-events": 0,
+      "default-case": 0,
+      "@typescript-eslint/default-param-last": 0,
+      "@typescript-eslint/switch-exhaustiveness-check": 2,
+      "@typescript-eslint/explicit-function-return-type": [
+        2,
+        {
+          "allowExpressions": true,
+          "allowTypedFunctionExpressions": true,
+          "allowHigherOrderFunctions": true,
+          "allowDirectConstAssertionInArrowFunctions": true
+        }
+      ]
+    },
+    "parserOptions": {
+      "project": [
+        "tsconfig.json"
+      ]
+    }
+  },
+```
 
 ### Решение ошибки с airbnb/airbnb-typescript
 
@@ -77,10 +79,12 @@ npm install --save-dev eslint-config-airbnb-typescript
 
 <!-- После выполнения убедиться, что в самом конце файла package.json появилось 2 новые development dependencies: -->
 
+```json lines
 "devDependencies": {
-"eslint-config-airbnb": "^19.0.4",
-"eslint-config-airbnb-typescript": "^17.0.0"
-}
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0"
+  }
+```
 
 # Установка React-Router-DOM
 
@@ -96,22 +100,48 @@ npm i react-router-dom
 
 "homepage": "./",
 
-<!-- Перед тем как выгрузить проект на GitHub нужно сначала выполнить его билд (из корневой папки проекта) с помощью команды: -->
+<!-- Один из самых простых способов деплоя проекта на GitHub Pages - это использование специального "npm" пакета. Для его установки надо выполнить команду: -->
 
-npm run build
+npm install gh-pages -D
 
-<!-- После этого в папке проекта появится новая папка build. Именно её нужно выгрузить на репо github (разумееется перед этим нужно создать новый репо для вашего проекта на GitHub) -->
-<!-- Все команды необходимо выполнить из папки build -->
+<!-- Обратите внимание, что после выполнения в файле package.json будет добавлена новая development dependencies: -->
+
+```json lines
+"devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+```
+
+<!-- А также изменена команда "build" в "scripts" на следующую строку: -->
+<!-- Имейте ввиду что эта строка для Windows. На системах Mac/Linux она будет отличаться -->
+
+"build": "react-scripts build && type nul > build\\.gitkeep",
+
+<!-- Затем в "scripts" файла package.json нужно добавить следующие скрипты: -->
+
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build",
+
+<!-- Если репозиторий уже создан, сохраняем изменения и комтитим их. Если нет, то выпоняем следующие шаги: -->
+
+<!-- Создаем новый репозиторий для вашего проекта локально а также на сайте GitHub (если еще не был создан) -->
+<!-- Все команды необходимо выполнять из корневой папки вашего проекта!! -->
 
 git init
 git add .
 git commit -m 'first commit'
-git remote add origin URL*РЕПОЗИТОРИЯ*ВАШЕГО*ПРОЕКТА*НА_GitHub (например: git@github.com:AlexDiz88/react_project.git)
+
+<!-- Затем делаем привязку проекта к онлайн репозиторию.  -->
+
+git remote add origin URL*РЕПОЗИТОРИЯ*ВАШЕГО*ПРОЕКТА*НА_GITHUB (например: git@github.com:your-name/your-project.git)
 git push -u origin master
 
-<!-- Далее создаем страницу на GitHub Pages и наслаждаемся своим проектом -->
+<!-- Теперь можно разворачивать React приложение одной командой: -->
 
-### Мой репо на github
+npm run deploy
 
-git remote add origin git@github.com:AlexDiz88/react_project.git
-git push -u origin master
+<!-- Эта команда сама сделает билд (build) вашего React приложения и, если нет никаких ошибок, то создаст (или обновит) дополнительную ветвь gh-pages и закомитит туда последнюю версию сборки вашего приложения. Если это первый деплой для вашего проекта, то будет создана новая папка build. Именно она будет выгружена на ветку gh-pages -->
+
+<!-- Также будет автоматически создана страница с вашим проектом на GitHub Pages по адресу:-->
+
+https://user-name.github.io/repository-name/
