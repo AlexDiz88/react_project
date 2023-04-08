@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react_project/static/css/main.aa25f26a.css",
-    "main.js": "/react_project/static/js/main.59654f79.js",
+    "main.js": "/react_project/static/js/main.6b1d66bc.js",
     "static/media/Logo-NHL.svg": "/react_project/static/media/Logo-NHL.d7f86c3eac1687a571810a4c004e049d.svg",
     "index.html": "/react_project/index.html",
     "main.aa25f26a.css.map": "/react_project/static/css/main.aa25f26a.css.map",
-    "main.59654f79.js.map": "/react_project/static/js/main.59654f79.js.map"
+    "main.6b1d66bc.js.map": "/react_project/static/js/main.6b1d66bc.js.map"
   },
   "entrypoints": [
     "static/css/main.aa25f26a.css",
-    "static/js/main.59654f79.js"
+    "static/js/main.6b1d66bc.js"
   ]
 }
