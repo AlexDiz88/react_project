@@ -36,6 +36,10 @@
       "airbnb-typescript"
     ],
     "rules": {
+      "linebreak-style": [
+        "error",
+        "windows"
+      ],
       "import/no-extraneous-dependencies": "off",
       "react/jsx-indent": 0,
       "implicit-arrow-linebreak": 0,

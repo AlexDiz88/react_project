@@ -1,15 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Layout from '../Layout/Layout';
+import Home from '../Home/Home';
+import NhlPlayoffs from '../NhlPlayoffs/NhlPlayoffs';
+import NhlStats from '../NhlStats/NhlStats';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, dolorum!</p>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/nhl-playoff" element={<NhlPlayoffs />} />
+        <Route path="/nhl-stats" element={<NhlStats />} />
+      </Route>
+    </Routes>
   );
 }
 
