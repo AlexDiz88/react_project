@@ -1,151 +1,108 @@
 import React, { useEffect, useState } from 'react';
 import style from './Home.module.css';
 
-interface TeamInfo {
+interface Game {
   id: number;
-  name: string;
-  gamesPlayed: number;
-  wins: number;
-  winsOT: number;
-  losses: number;
-  points: number;
-  goalsScored: number;
-  goalsAgainst: number;
+  homeTeam: string;
+  homeTeamScore: number;
+  awayTeam: string;
+  awayTeamScore: number;
+  status: string;
 }
 
 function Home(): JSX.Element {
-  const [teamData, setTeamData] = useState<TeamInfo[]>([]);
+  const [lastGames, setLastGames] = useState<Game[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [divisionMetropolitanTeams, setDivisionMetropolitanTeams] = useState<
-    TeamInfo[]
-  >([]);
-  const [divisionAtlanticTeams, setDivisionAtlanticTeams] = useState<TeamInfo[]>([]);
-  const [divisionCentralTeams, setDivisionCentralTeams] = useState<TeamInfo[]>([]);
-  const [divisionPacificTeams, setDivisionPacificTeams] = useState<TeamInfo[]>([]);
 
   useEffect(() => {
-    async function getStandings(divisionId: number): Promise<TeamInfo[]> {
-      const response = await fetch('https://statsapi.web.nhl.com/api/v1/standings');
-      const obj = await response.json();
-      const data = obj.records[divisionId].teamRecords;
-      const newTeamData = data.map((record: any, index: number) => {
-        const teamId: number = index;
-        const teamName: string = record.team.name;
-        const teamGamesPlayed: number = record.gamesPlayed;
-        const teamWins: number = record.leagueRecord.wins;
-        const teamWinsOT: number = record.leagueRecord.ot;
-        const teamLosses: number = record.leagueRecord.losses;
-        const teamPoints: number = record.points;
-        const teamGoalsScored: number = record.goalsScored;
-        const teamGoalsAgainst: number = record.goalsAgainst;
-        return {
-          id: teamId,
-          name: teamName,
-          gamesPlayed: teamGamesPlayed,
-          wins: teamWins,
-          winsOT: teamWinsOT,
-          losses: teamLosses,
-          points: teamPoints,
-          goalsScored: teamGoalsScored,
-          goalsAgainst: teamGoalsAgainst,
+    async function getGames(): Promise<void> {
+      const response = await fetch(
+        'https://statsapi.web.nhl.com/api/v1/schedule?expand=schedule.linescore'
+      );
+      const data = await response.json();
+      const lastGamesData = data.dates[0].games;
+      const games = lastGamesData.map(
+        (game: any, index: number): Game => ({
+          id: index,
+          homeTeam: game.teams.home.team.name,
+          homeTeamScore: game.teams.home.score,
+          awayTeam: game.teams.away.team.name,
+          awayTeamScore: game.teams.away.score,
+          status: game.status.detailedState,
+        })
+      );
+      const sortedItems = games.sort((a: Game, b: Game) => {
+        const order: any = {
+          Final: 1,
+          'Game Over': 2,
+          'In Progress - Critical': 3,
+          'In Progress': 4,
+          'Pre-Game': 5,
+          Scheduled: 6,
         };
+        return order[a.status] - order[b.status];
       });
-      console.log(teamData);
-      setTeamData(newTeamData);
+      setLastGames(sortedItems);
       setIsLoaded(true);
-      return newTeamData;
+      console.log(games);
     }
-
-    async function getAllDivisons(): Promise<void> {
-      const divMetropolitanTeams = await getStandings(0);
-      const divAtlanticTeams = await getStandings(1);
-      const divCentralTeams = await getStandings(2);
-      const divPacificTeams = await getStandings(3);
-      setDivisionMetropolitanTeams(divMetropolitanTeams);
-      setDivisionAtlanticTeams(divAtlanticTeams);
-      setDivisionCentralTeams(divCentralTeams);
-      setDivisionPacificTeams(divPacificTeams);
-    }
-    getAllDivisons();
+    getGames();
   }, []);
 
   return (
     <div className={style.wrapper}>
+      <div className={style.title}>Last Games:</div>
       <div>
         {isLoaded ? (
-          <div className={style.table}>
-            <div className={style.divisionWrapper}>
-              <span className={style.divisionTitle}>
-                Division: Metropolitan, Eastern Conference
-              </span>
-              {divisionMetropolitanTeams.map((team) => (
-                <div key={team.id} className={style.tableRow}>
-                  <span className={style.teamName}>{team.name}</span>
-                  <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
-                  <span className={style.teamWins}>{team.wins}</span>
-                  <span className={style.teamWinsOT}>{team.winsOT}</span>
-                  <span className={style.teamLosses}>{team.losses}</span>
-                  <span className={style.teamGoalsScored}>{team.goalsScored}</span>
-                  <span className={style.teamGoalsAgainst}>{team.goalsAgainst}</span>
-                  <span className={style.teamPoints}>{team.points}</span>
+          <div className={style.gamesWrapper}>
+            {lastGames.map((game) => (
+              <div key={game.id} className={style.gameInfo}>
+                {game.status === 'Final' ? (
+                  <span className={style.gameStatusFinal}>{game.status}</span>
+                ) : game.status === 'Game Over' ? (
+                  <span className={style.gameStatusGameOver}>{game.status}</span>
+                ) : game.status === 'In Progress - Critical' ? (
+                  <span className={style.gameStatusCritical}>{game.status}</span>
+                ) : game.status === 'In Progress' ? (
+                  <span className={style.gameStatusInProgress}>{game.status}</span>
+                ) : game.status === 'Pre-Game' ? (
+                  <span className={style.gameStatusPreGame}>{game.status}</span>
+                ) : (
+                  <span className={style.gameStatusScheduled}>{game.status}</span>
+                )}
+
+                <div className={style.game}>
+                  <img
+                    className={style.teamLogo}
+                    src={`${process.env.PUBLIC_URL}/teams_logo/${game.homeTeam}.png`}
+                    alt="Logo"
+                  />
+                  <span className={style.homeTeamName}>{game.homeTeam}</span>
+                  <div className={style.score}>
+                    <span className={style.teamScore}>{game.homeTeamScore}</span>
+                    <span className={style.colon}>:</span>
+                    <span className={style.teamScore}>{game.awayTeamScore}</span>
+                  </div>
+                  <span className={style.awayTeamName}>{game.awayTeam}</span>
+                  <img
+                    className={style.teamLogo}
+                    src={`${process.env.PUBLIC_URL}/teams_logo/${game.awayTeam}.png`}
+                    alt="Logo"
+                  />
                 </div>
-              ))}
-            </div>
-            <div className={style.divisionWrapper}>
-              <span className={style.divisionTitle}>
-                Division: Atlantic, Eastern Conference
-              </span>
-              {divisionAtlanticTeams.map((team) => (
-                <div key={team.id} className={style.tableRow}>
-                  <span className={style.teamName}>{team.name}</span>
-                  <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
-                  <span className={style.teamWins}>{team.wins}</span>
-                  <span className={style.teamWinsOT}>{team.winsOT}</span>
-                  <span className={style.teamLosses}>{team.losses}</span>
-                  <span className={style.teamGoalsScored}>{team.goalsScored}</span>
-                  <span className={style.teamGoalsAgainst}>{team.goalsAgainst}</span>
-                  <span className={style.teamPoints}>{team.points}</span>
-                </div>
-              ))}
-            </div>
-            <div className={style.divisionWrapper}>
-              <span className={style.divisionTitle}>
-                Division: Central, Western Conference
-              </span>
-              {divisionCentralTeams.map((team) => (
-                <div key={team.id} className={style.tableRow}>
-                  <span className={style.teamName}>{team.name}</span>
-                  <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
-                  <span className={style.teamWins}>{team.wins}</span>
-                  <span className={style.teamWinsOT}>{team.winsOT}</span>
-                  <span className={style.teamLosses}>{team.losses}</span>
-                  <span className={style.teamGoalsScored}>{team.goalsScored}</span>
-                  <span className={style.teamGoalsAgainst}>{team.goalsAgainst}</span>
-                  <span className={style.teamPoints}>{team.points}</span>
-                </div>
-              ))}
-            </div>
-            <div className={style.divisionWrapper}>
-              <span className={style.divisionTitle}>
-                Division: Pacific, Western Conference
-              </span>
-              {divisionPacificTeams.map((team) => (
-                <div key={team.id} className={style.tableRow}>
-                  <span className={style.teamName}>{team.name}</span>
-                  <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
-                  <span className={style.teamWins}>{team.wins}</span>
-                  <span className={style.teamWinsOT}>{team.winsOT}</span>
-                  <span className={style.teamLosses}>{team.losses}</span>
-                  <span className={style.teamGoalsScored}>{team.goalsScored}</span>
-                  <span className={style.teamGoalsAgainst}>{team.goalsAgainst}</span>
-                  <span className={style.teamPoints}>{team.points}</span>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         ) : (
           <p>Loading...</p>
         )}
+      </div>
+      <div className={style.wrapper}>
+        <h3>Pages Status:</h3>
+        <div>Home - in progress</div>
+        <div>Playoffs - very soon</div>
+        <div>Standings - READY!</div>
+        <div>Stats - in future</div>
       </div>
     </div>
   );

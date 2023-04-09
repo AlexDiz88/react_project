@@ -1,75 +1,146 @@
 .wrapper {
-  margin: 25px 0 0 50px;
+  padding: 15px 50px 50px 50px;
 }
 
-.table {
+.gamesWrapper {
   display: grid;
-  grid-template-columns: repeat(2, 0.25fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  box-sizing: border-box;
 }
 
-.divisionWrapper {
-  box-shadow: 0px 3px 10px black;
-  border-radius: 10px;
+@media screen and (max-width: 1050px) {
+  .gamesWrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
-.divisionTitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (min-width: 1051px) and (max-width: 1500px) {
+  .gamesWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1501px) {
+  .gamesWrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.title {
   font-weight: bold;
-  font-size: 23px;
-  height: 40px;
-  width: 100%;
-  background-color: rgb(170, 170, 170);
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
-.tableRow {
+.gameInfo {
   display: flex;
-  margin-top: 10px;
-  font-size: 19px;
-  padding: 0 0px 3px 15px;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 460px;
+  border: 1px solid black;
+  box-shadow: 0px 5px 12px rgb(15, 29, 27);
+  box-sizing: border-box;
+}
+
+.gameStatusFinal,
+.gameStatusGameOver,
+.gameStatusCritical,
+.gameStatusInProgress,
+.gameStatusPreGame,
+.gameStatusScheduled {
+  font-weight: bold;
+  font-size: 15px;
+  height: 20px;
+  text-align: center;
+  background-color: rgb(82, 82, 82);
+  color: whitesmoke;
   border-bottom: 1px solid black;
 }
 
-.tableRow span {
-  display: flex;
-  justify-content: center;
-  padding: 3px;
+.gameStatusFinal,
+.gameStatusGameOver {
+  background-color: rgb(57, 57, 99);
 }
 
-.tableRow:last-child {
-  border-bottom: none;
+.gameStatusInProgress {
+  animation: pulsate1 5s ease-out infinite;
 }
 
-span.teamName {
-  display: flex;
-  justify-content: flex-start;
-  width: 210px;
+.gameStatusCritical {
+  animation: pulsate2 3s ease-out infinite;
+}
+
+.homeTeamName,
+.awayTeamName {
   font-weight: bold;
 }
-.gamesPlayed {
-  width: 30px;
+.homeTeamName {
+  text-align-last: left;
+}
+.awayTeamName {
+  text-align: right;
 }
 
-.teamWins {
-  width: 30px;
+.teamLogo {
+  height: 55px;
+  width: 65px;
+  box-sizing: border-box;
+  padding: 0 5px;
 }
-.teamWinsOT {
-  width: 30px;
-}
-.teamLosses {
-  width: 30px;
-}
-.teamGoalsScored {
-  width: 40px;
-}
-.teamGoalsAgainst {
-  width: 40px;
-}
-.teamPoints {
-  width: 40px;
-  margin-right: 15px;
+
+.teamScore {
   font-weight: bold;
-  background-color: rgb(200, 209, 197);
+  font-size: 45px;
+  margin: 0 5px;
+  box-sizing: border-box;
+}
+
+.colon {
+  font-weight: bold;
+  font-size: 45px;
+  box-sizing: border-box;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
+  align-items: center;
+  background-color: rgb(213, 226, 225);
+  box-sizing: border-box;
+  min-height: 60px;
+  max-height: 150px;
+}
+
+.game:hover {
+  background: rgb(115, 192, 192);
+  background: linear-gradient(
+    180deg,
+    rgba(174, 238, 235, 1) 0%,
+    rgba(110, 208, 247, 0.74) 47%,
+    rgb(67, 86, 170) 100%
+  );
+}
+
+@keyframes pulsate1 {
+  0% {
+    background-color: #2f7e01;
+  }
+  50% {
+    background-color: #519e42;
+  }
+  100% {
+    background-color: #2f7e01;
+  }
+}
+@keyframes pulsate2 {
+  0% {
+    background-color: #7e1401;
+  }
+  50% {
+    background-color: #b94d0e;
+  }
+  100% {
+    background-color: #7e1401;
+  }
 }

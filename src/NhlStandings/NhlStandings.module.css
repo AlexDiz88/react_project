@@ -1,0 +1,128 @@
+.wrapper {
+  margin: 25px 0 0 50px;
+  padding-bottom: 40px;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(2, 0.25fr);
+  gap: 20px;
+}
+
+.divisionWrapper {
+  box-shadow: 1px 3px 10px black;
+  border-radius: 5px;
+}
+
+.divisionTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  height: 40px;
+  width: 100%;
+  background-color: rgb(170, 170, 170);
+  border-radius: 5px 5px 0 0;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  border-bottom: 1px solid black;
+  height: 40px;
+}
+.tableRow:hover {
+  background-color: rgb(129, 230, 216);
+}
+
+.tableRow span {
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+span.teamName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 280px;
+  font-weight: bold;
+}
+.gamesPlayed {
+  width: 30px;
+}
+
+.teamWins {
+  width: 30px;
+}
+.teamWinsOT {
+  width: 30px;
+}
+.teamLosses {
+  width: 30px;
+  margin-right: 8px;
+}
+.teamGoalsScored {
+  width: 40px;
+}
+.teamGoalsAgainst {
+  margin-left: -12px;
+  padding-left: 0;
+  width: 40px;
+}
+.teamPoints {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  margin-right: 3px;
+  font-weight: bold;
+  background-color: rgb(198, 222, 250);
+  height: 34px;
+}
+
+.teamLogo {
+  height: 40px;
+  width: 40px;
+  padding: 0 10px 0 5px;
+}
+
+.statsInfo {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.teamStatInfo {
+  width: 285px;
+  padding-left: 10px;
+}
+
+.gamesPlayedStatInfo {
+  padding-left: 4px;
+}
+.teamWinsStatInfo {
+  padding-left: 27px;
+}
+
+.teamWinsOTStatInfo {
+  padding-left: 23px;
+}
+.teamLossesStatInfo {
+  padding-left: 22px;
+}
+.teamGoalsStatInfo {
+  padding-left: 46px;
+}
+.teamPointsStatInfo {
+  padding-left: 45px;
+}
+
+.footnote {
+  padding-top: 20px;
+  font-size: 14px;
+}
