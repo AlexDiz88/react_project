@@ -9,24 +9,6 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1050px) {
-  .gamesWrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (min-width: 1051px) and (max-width: 1500px) {
-  .gamesWrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (min-width: 1501px) {
-  .gamesWrapper {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .title {
   font-weight: bold;
   font-size: 25px;
@@ -34,22 +16,111 @@
 }
 
 .gameInfo {
+  position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 400px;
-  max-width: 460px;
+  width: 450px;
   border: 1px solid black;
   box-shadow: 0px 5px 12px rgb(15, 29, 27);
   box-sizing: border-box;
+  cursor: pointer;
 }
 
-.gameStatusFinal,
-.gameStatusGameOver,
-.gameStatusCritical,
-.gameStatusInProgress,
-.gameStatusPreGame,
-.gameStatusScheduled {
+.gameDetails {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: 100.5%;
+  height: fit-content;
+  padding: 5px;
+  color: whitesmoke;
+  font-size: 19px;
   font-weight: bold;
+  background: rgb(0, 255, 226);
+  background: rgb(0, 255, 226);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 226, 1) 0%,
+    rgb(56, 56, 56) 3%,
+    rgb(26, 26, 26) 50%,
+    rgb(56, 56, 56) 97%,
+    rgba(0, 255, 244, 1) 100%
+  );
+  border: 1px solid black;
+  z-index: 10;
+  box-sizing: border-box;
+  animation-name: unfold;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.detailsInfo {
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+
+.allGoalsInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.infoTitle {
+  padding-top: 2px;
+  font-size: 15px;
+}
+
+.shootsInfo {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid gray;
+  padding-bottom: 3px;
+}
+
+@keyframes unfold {
+  from {
+    height: 0;
+  }
+  to {
+    height: 210px;
+  }
+}
+
+@keyframes fold {
+  from {
+    height: 0;
+  }
+  to {
+    height: 200px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.statusTitleFinal,
+.statusTitleGameOver,
+.statusTitleCritical,
+.statusTitleInProgress,
+.statusTitlePreGame,
+.statusTitleScheduled {
+  position: relative;
+  font-weight: bold;
+  width: 100%;
   font-size: 15px;
   height: 20px;
   text-align: center;
@@ -58,16 +129,16 @@
   border-bottom: 1px solid black;
 }
 
-.gameStatusFinal,
-.gameStatusGameOver {
+.statusTitleFinal,
+.statusTitleGameOver {
   background-color: rgb(57, 57, 99);
 }
 
-.gameStatusInProgress {
+.statusTitleInProgress {
   animation: pulsate1 5s ease-out infinite;
 }
 
-.gameStatusCritical {
+.statusTitleCritical {
   animation: pulsate2 3s ease-out infinite;
 }
 
@@ -83,7 +154,6 @@
 }
 
 .teamLogo {
-  height: 55px;
   width: 65px;
   box-sizing: border-box;
   padding: 0 5px;
@@ -113,12 +183,14 @@
 }
 
 .game:hover {
-  background: rgb(115, 192, 192);
-  background: linear-gradient(
-    180deg,
-    rgba(174, 238, 235, 1) 0%,
-    rgba(110, 208, 247, 0.74) 47%,
-    rgb(67, 86, 170) 100%
+  background-image: linear-gradient(
+    to top,
+    lightgrey 0%,
+    lightgrey 1%,
+    #e0e0e0 26%,
+    #efefef 48%,
+    #d9d9d9 75%,
+    #bcbcbc 100%
   );
 }
 
@@ -143,4 +215,35 @@
   100% {
     background-color: #7e1401;
   }
+}
+
+@media screen and (max-width: 1050px) {
+  .gamesWrapper {
+    grid-template-columns: 1fr;
+  }
+  .gameInfo {
+    width: 550px;
+  }
+}
+
+@media screen and (min-width: 1051px) and (max-width: 1500px) {
+  .gamesWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gameInfo {
+    width: 480px;
+  }
+}
+
+@media screen and (min-width: 1501px) {
+  .gamesWrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gameStatusWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: yellow;
+  width: 100%;
 }

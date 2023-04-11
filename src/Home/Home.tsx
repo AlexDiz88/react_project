@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import style from './Home.module.css';
+import DateParser from './DateParser';
+import GameStatusParser from './GameStatusParser';
+import GameDetails from './GameDetails';
 
 interface Game {
   id: number;
+  gamePk: number;
+  gameDate: string;
   homeTeam: string;
   homeTeamScore: number;
   awayTeam: string;
   awayTeamScore: number;
   status: string;
+  statusCode: number;
+  statusTitleStyle: string;
 }
 
 function Home(): JSX.Element {
   const [lastGames, setLastGames] = useState<Game[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [selectedGameId, setSelectedGameId] = useState<number | null>(null);
+  const toggleMatchDetails = (id: number): void => {
+    if (id === selectedGameId) {
+      setSelectedGameId(null);
+    } else {
+      setSelectedGameId(id);
+    }
+  };
 
   useEffect(() => {
     async function getGames(): Promise<void> {
@@ -21,30 +36,27 @@ function Home(): JSX.Element {
       );
       const data = await response.json();
       const lastGamesData = data.dates[0].games;
-      const games = lastGamesData.map(
-        (game: any, index: number): Game => ({
+      const games = lastGamesData.map((game: any, index: number): Game => {
+        const gameTime = DateParser(game.gameDate);
+        const gameStatus = GameStatusParser(game.status, game.linescore);
+        return {
           id: index,
+          gamePk: game.gamePk,
+          gameDate: gameTime,
           homeTeam: game.teams.home.team.name,
           homeTeamScore: game.teams.home.score,
           awayTeam: game.teams.away.team.name,
           awayTeamScore: game.teams.away.score,
-          status: game.status.detailedState,
-        })
-      );
-      const sortedItems = games.sort((a: Game, b: Game) => {
-        const order: any = {
-          Final: 1,
-          'Game Over': 2,
-          'In Progress - Critical': 3,
-          'In Progress': 4,
-          'Pre-Game': 5,
-          Scheduled: 6,
+          status: gameStatus.actualGameStatus,
+          statusCode: gameStatus.gameStatusCode,
+          statusTitleStyle: gameStatus.statusTitleStyle,
         };
-        return order[a.status] - order[b.status];
       });
-      setLastGames(sortedItems);
+      const sortedGames = games.sort(
+        (a: Game, b: Game) => a.statusCode - b.statusCode
+      );
+      setLastGames(sortedGames);
       setIsLoaded(true);
-      console.log(games);
     }
     getGames();
   }, []);
@@ -56,19 +68,19 @@ function Home(): JSX.Element {
         {isLoaded ? (
           <div className={style.gamesWrapper}>
             {lastGames.map((game) => (
-              <div key={game.id} className={style.gameInfo}>
-                {game.status === 'Final' ? (
-                  <span className={style.gameStatusFinal}>{game.status}</span>
-                ) : game.status === 'Game Over' ? (
-                  <span className={style.gameStatusGameOver}>{game.status}</span>
-                ) : game.status === 'In Progress - Critical' ? (
-                  <span className={style.gameStatusCritical}>{game.status}</span>
-                ) : game.status === 'In Progress' ? (
-                  <span className={style.gameStatusInProgress}>{game.status}</span>
-                ) : game.status === 'Pre-Game' ? (
-                  <span className={style.gameStatusPreGame}>{game.status}</span>
+              <div
+                key={game.id}
+                className={style.gameInfo}
+                onClick={() => toggleMatchDetails(game.id)}
+                role="textbox"
+                tabIndex={0}
+              >
+                {game.status === 'Scheduled' ? (
+                  <span className={style[game.statusTitleStyle]}>
+                    {game.gameDate}
+                  </span>
                 ) : (
-                  <span className={style.gameStatusScheduled}>{game.status}</span>
+                  <span className={style[game.statusTitleStyle]}>{game.status}</span>
                 )}
 
                 <div className={style.game}>
@@ -89,6 +101,20 @@ function Home(): JSX.Element {
                     src={`${process.env.PUBLIC_URL}/teams_logo/${game.awayTeam}.png`}
                     alt="Logo"
                   />
+                  {/* Отображение дополнительной информации при клике на матч */}
+                  {game.id === selectedGameId && (
+                    <div className={style.gameDetails}>
+                      <div className={style.detailsInfo}>
+                        {game.statusCode > 4 ? (
+                          <div>- Матч не начался -</div>
+                        ) : (
+                          <div>
+                            <GameDetails gameId={game.gamePk} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

@@ -1,17 +1,27 @@
 .wrapper {
-  margin: 25px 0 0 50px;
-  padding-bottom: 40px;
+  margin: 30px;
+  width: 100vh;
 }
 
 .table {
   display: grid;
-  grid-template-columns: repeat(2, 0.25fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  min-width: 567px;
+  max-width: 1153px;
+}
+
+@media screen and (max-width: 1200px) {
+  .table {
+    grid-template-columns: 1fr;
+    width: 567px;
+  }
 }
 
 .divisionWrapper {
-  box-shadow: 1px 3px 10px black;
+  box-shadow: 1px 3px 10px rgb(0, 0, 0);
   border-radius: 5px;
+  border: 1px solid rgba(95, 95, 95, 0.815);
 }
 
 .divisionTitle {
@@ -30,21 +40,20 @@
   display: flex;
   align-items: center;
   font-size: 19px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(133, 133, 133);
   height: 40px;
 }
 .tableRow:hover {
   background-color: rgb(129, 230, 216);
+}
+.tableRow:last-child {
+  border-bottom: none;
 }
 
 .tableRow span {
   display: flex;
   justify-content: center;
   padding: 3px;
-}
-
-.tableRow:last-child {
-  border-bottom: none;
 }
 
 span.teamName {
@@ -82,8 +91,9 @@ span.teamName {
   width: 40px;
   margin-right: 3px;
   font-weight: bold;
-  background-color: rgb(198, 222, 250);
+  background-color: rgb(198, 216, 218);
   height: 34px;
+  border-radius: 5px;
 }
 
 .teamLogo {
@@ -96,6 +106,10 @@ span.teamName {
   display: flex;
   align-items: center;
   font-size: 14px;
+  background-color: rgb(95, 95, 95);
+  color: whitesmoke;
+  border-top: 1px solid rgb(58, 58, 58);
+  border-bottom: 1px solid rgb(58, 58, 58);
 }
 .teamStatInfo {
   width: 285px;
