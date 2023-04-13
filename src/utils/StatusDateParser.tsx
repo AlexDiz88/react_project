@@ -1,7 +1,9 @@
-function DateParser(date: string): string {
-  const gameDay = date.substring(8, 10);
-  let gameMonth = date.substring(5, 7);
-  const gameTime = `${date.substring(11, 16)} (UTC)`;
+function StatusDateParser(date: string): string {
+  const convertedDate = new Date(date).toLocaleString();
+
+  const gameDay = convertedDate.substring(0, 2);
+  let gameMonth = convertedDate.substring(3, 5);
+  const gameTime = `${convertedDate.substring(12, 17)} (Local Time)`;
   switch (gameMonth) {
     case '01':
       gameMonth = 'January';
@@ -43,4 +45,4 @@ function DateParser(date: string): string {
   return `${gameDay} ${gameMonth} ${gameTime}`;
 }
 
-export default DateParser;
+export default StatusDateParser;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from './Home.module.css';
+import style from '../GameCard/GameCard.module.css';
 
 interface Props {
   gameId: number;
@@ -35,6 +35,8 @@ function GameDetails(props: Props): JSX.Element {
         `https://statsapi.web.nhl.com/api/v1/game/${gameId}/feed/live`
       );
       const data = await response.json();
+      // console.log(data);
+
       const { allPlays } = data.liveData.plays;
       const { scoringPlays } = data.liveData.plays;
       const homeTeam = data.gameData.teams.home.name;
@@ -111,24 +113,10 @@ function GameDetails(props: Props): JSX.Element {
           </div>
         </div>
       ) : (
-        <div>- Матч не начался - </div>
+        <div>Данные загружаются...</div>
       )}
     </div>
   );
 }
 
 export default GameDetails;
-
-// homeTeamGoals = goalsInfo.map((goal: GoalInfo): GoalInfo | null => {
-//   if (goal.team === homeTeam) {
-//     return {
-//       id: goal.id,
-//       team: goal.team,
-//       goalPeriod: goal.goalPeriod,
-//       goalTime: goal.goalTime,
-//       isPowerPlay: goal.isPowerPlay,
-//       playerFullName: goal.playerFullName,
-//     };
-//   }
-//   return null;
-// });

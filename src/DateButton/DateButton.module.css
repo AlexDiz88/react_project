@@ -1,0 +1,26 @@
+.btn {
+  height: 50px;
+  width: 150px;
+  margin-right: 5px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-left: 3px solid rgba(14, 255, 223, 0);
+  border-right: 3px solid rgba(14, 255, 223, 0);
+  box-shadow: 1px 1px 8px black;
+}
+
+.btn:hover {
+  border-left: 3px solid rgb(35, 204, 182);
+  border-right: 3px solid rgb(35, 204, 182);
+  box-sizing: border-box;
+  background-color: rgb(36, 36, 36);
+  color: whitesmoke;
+}
+
+.btn:active {
+  border-left: 3px solid rgb(90, 233, 46);
+  border-right: 3px solid rgb(90, 233, 46);
+  box-shadow: none;
+}
