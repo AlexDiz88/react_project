@@ -1,7 +1,7 @@
 .btn {
+  position: relative;
+  width: 33%;
   height: 50px;
-  width: 150px;
-  margin-right: 5px;
   border: none;
   font-size: 18px;
   font-weight: bold;
@@ -42,4 +42,48 @@
 
 .selected:active {
   box-shadow: 1px 1px 8px black;
+}
+
+@media only screen and (min-width: 1365px) {
+  .btn {
+    max-width: 149.5px;
+    min-width: 149.5px;
+  }
+}
+
+@media only screen and (min-width: 941px) and (max-width: 1364px) {
+  .btn {
+    max-width: 159.5px;
+    min-width: 159.5px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 940px) {
+  .btn {
+    max-width: 166.4px;
+    min-width: 166.4px;
+  }
+}
+
+@media only screen and (min-width: 531px) and (max-width: 768px) {
+  .btn {
+    max-width: 156.4px;
+    min-width: 156.4px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 530px) {
+  .btn {
+    max-width: 160px;
+    min-width: 140px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .btn {
+    max-width: 130px;
+    min-width: 110px;
+    font-size: 15px;
+  }
 }

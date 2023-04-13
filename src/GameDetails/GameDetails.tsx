@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from '../GameCard/GameCard.module.css';
+import style from './GameDetails.module.css';
 
 interface Props {
   gameId: number;
@@ -80,9 +80,9 @@ function GameDetails(props: Props): JSX.Element {
   }, [gameId]);
 
   return (
-    <div>
+    <div className={style.gameDetails}>
       {isLoaded ? (
-        <div>
+        <div className={style.detailsInfo}>
           <div className={style.shootsInfo}>
             <span>{shootsInfo.homeTeamShoots}</span>
             <span> Shoots </span>

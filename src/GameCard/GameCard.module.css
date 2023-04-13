@@ -1,41 +1,24 @@
-.pageWrapper {
-  padding: 15px 50px 50px 50px;
-}
-
-.gamesWrapper {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  box-sizing: border-box;
-}
-
-.title {
-  font-weight: bold;
-  font-size: 25px;
-  margin-bottom: 15px;
-}
-
 .gameInfo {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 450px;
   border: 1px solid black;
   box-shadow: 0px 5px 12px rgb(15, 29, 27);
   box-sizing: border-box;
   cursor: pointer;
 }
 
-.gameDetails {
+.noGameDetails {
+  display: flex;
   position: absolute;
-  top: 100%;
+  top: 100.5%;
   left: -1px;
   width: 100.5%;
-  height: fit-content;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
   color: whitesmoke;
-  font-size: 19px;
-  font-weight: bold;
   background: rgb(0, 255, 226);
   background: rgb(0, 255, 226);
   background: linear-gradient(
@@ -48,41 +31,9 @@
   );
   border: 1px solid black;
   z-index: 10;
-  box-sizing: border-box;
   animation-name: unfold;
-  animation-duration: 1s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
-}
-
-.detailsInfo {
-  font-size: 14px;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  animation-name: fade-in;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-delay: 0.15s;
-  opacity: 0;
-}
-
-.allGoalsInfo {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.infoTitle {
-  padding-top: 2px;
-  font-size: 15px;
-}
-
-.shootsInfo {
-  display: flex;
-  justify-content: space-evenly;
-  border-bottom: 1px solid gray;
-  padding-bottom: 3px;
 }
 
 @keyframes unfold {
@@ -90,25 +41,7 @@
     height: 0;
   }
   to {
-    height: 210px;
-  }
-}
-
-@keyframes fold {
-  from {
-    height: 0;
-  }
-  to {
-    height: 200px;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+    height: 108px;
   }
 }
 
@@ -148,9 +81,11 @@
 }
 .homeTeamName {
   text-align-last: left;
+  padding-right: 5px;
 }
 .awayTeamName {
   text-align: right;
+  padding-left: 5px;
 }
 
 .teamLogo {
@@ -162,7 +97,7 @@
 .teamScore {
   font-weight: bold;
   font-size: 45px;
-  margin: 0 5px;
+  padding: 0 0px;
   box-sizing: border-box;
 }
 
@@ -174,12 +109,12 @@
 
 .game {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
+  grid-template-columns: 0.8fr 3fr 1fr 3fr 0.8fr;
   align-items: center;
   background-color: rgb(213, 226, 225);
   box-sizing: border-box;
-  min-height: 60px;
-  max-height: 150px;
+  height: 65px;
+  font-size: 17px;
 }
 
 .game:hover {
@@ -217,33 +152,86 @@
   }
 }
 
-@media screen and (max-width: 1050px) {
-  .gamesWrapper {
-    grid-template-columns: 1fr;
-  }
-  .gameInfo {
-    width: 550px;
-  }
-}
-
-@media screen and (min-width: 1051px) and (max-width: 1500px) {
-  .gamesWrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .gameInfo {
-    width: 480px;
-  }
-}
-
-@media screen and (min-width: 1501px) {
-  .gamesWrapper {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .gameStatusWrapper {
   display: flex;
   justify-content: center;
   background-color: yellow;
   width: 100%;
+}
+
+@media only screen and (min-width: 1365px) {
+  .gameInfo {
+    max-width: 460px;
+    min-width: 420px;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1364px) {
+  .gameInfo {
+    max-width: 490px;
+    min-width: 475px;
+  }
+  .game {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .gameInfo {
+    max-width: 510px;
+    min-width: 430px;
+  }
+  .game {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .gameInfo {
+    max-width: 480px;
+    min-width: 430px;
+  }
+  .game {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 480px) {
+  .gameInfo {
+    max-width: 430px;
+    min-width: 340px;
+  }
+  .game {
+    font-size: 16px;
+  }
+  .teamLogo {
+    width: 55px;
+  }
+  .teamScore {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .gameInfo {
+    max-width: 400px;
+    min-width: 300px;
+    margin: 0 auto;
+  }
+  .game {
+    font-size: 15px;
+  }
+  .teamLogo {
+    width: 50px;
+  }
+
+  .teamScore {
+    font-size: 35px;
+  }
+
+  .colon {
+    align-items: center;
+    font-size: 30px;
+    padding-bottom: 100px;
+  }
 }

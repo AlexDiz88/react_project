@@ -1,0 +1,72 @@
+.shootsInfo {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid gray;
+  padding-bottom: 3px;
+}
+
+.allGoalsInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.infoTitle {
+  padding-top: 2px;
+  font-size: 15px;
+}
+
+.gameDetails {
+  position: absolute;
+  top: 100.5%;
+  left: -1px;
+  width: 100.5%;
+  box-sizing: border-box;
+  padding: 5px;
+  color: whitesmoke;
+  background: rgb(0, 255, 226);
+  background: rgb(0, 255, 226);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 226, 1) 0%,
+    rgb(56, 56, 56) 3%,
+    rgb(26, 26, 26) 50%,
+    rgb(56, 56, 56) 97%,
+    rgba(0, 255, 244, 1) 100%
+  );
+  border: 1px solid black;
+  z-index: 10;
+  animation-name: unfold;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.detailsInfo {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  text-align: center;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+
+@keyframes unfold {
+  from {
+    height: 0;
+  }
+  to {
+    height: 217px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

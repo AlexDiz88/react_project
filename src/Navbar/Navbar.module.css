@@ -3,17 +3,17 @@
   height: 50px;
   display: flex;
   width: 100%;
-  min-width: 900px;
   box-shadow: 0px 3px 10px rgb(35, 204, 182);
+  box-sizing: border-box;
 }
 
 .logo {
   border: 3px solid rgb(36, 36, 36);
-  width: 70px;
+  width: 5%;
 }
 
 .wrapper button {
-  min-width: 175px;
+  width: 14%;
   background-color: rgb(36, 36, 36);
   border: none;
   border-right: 1px solid gray;
@@ -31,4 +31,58 @@
   font-size: 21px;
   color: rgb(4, 247, 214);
   background-color: rgb(27, 27, 27);
+}
+.wrapper button:active {
+  color: rgb(4, 247, 214);
+}
+
+@media only screen and (min-width: 1241px) {
+  .wrapper button {
+    width: 12%;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1240px) {
+  .wrapper button {
+    font-size: 19px;
+  }
+  .wrapper button:hover {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .wrapper button {
+    width: 17%;
+    font-size: 18px;
+  }
+  .wrapper button:hover {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .wrapper button {
+    font-size: 17px;
+    width: 100%;
+  }
+  .wrapper button:hover {
+    font-size: 18px;
+  }
+  .logo {
+    width: 5%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .wrapper button {
+    width: 25%;
+    font-size: 14px;
+  }
+  .wrapper button:hover {
+    font-size: 15px;
+  }
+  .logo {
+    display: none;
+  }
 }

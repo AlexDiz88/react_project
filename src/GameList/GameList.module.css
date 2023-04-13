@@ -3,22 +3,41 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   box-sizing: border-box;
+  width: 100%;
 }
 
-@media screen and (max-width: 1050px) {
-  .gameListWrapper {
-    grid-template-columns: 1fr;
-  }
+.noGamesInfo {
+  padding: 20px 0;
+  font-size: 25px;
+  font-weight: bold;
 }
 
-@media screen and (min-width: 1501px) {
+@media only screen and (min-width: 1365px) {
   .gameListWrapper {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.noGamesInfo {
-  padding: 15px 0;
-  font-size: 25px;
-  font-weight: bold;
+@media only screen and (min-width: 941) and (max-width: 1364px) {
+  .gameListWrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 940px) {
+  .gameListWrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .gameListWrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .gameListWrapper {
+    grid-template-columns: 1fr;
+  }
 }

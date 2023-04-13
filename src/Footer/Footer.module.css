@@ -7,10 +7,29 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
   text-align: center;
   min-height: 15px;
   font-size: 15px;
   padding: 10px;
   background-color: rgb(46, 46, 46);
   color: whitesmoke;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 940px) {
+  .wrapper {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .wrapper {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    font-size: 10px;
+  }
 }

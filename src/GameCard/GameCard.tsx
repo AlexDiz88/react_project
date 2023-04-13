@@ -82,16 +82,12 @@ function GameCard({ gameLink }: Props): JSX.Element {
             />
             {/* Отображение дополнительной информации при клике на матч */}
             {gameInfo.gamePk === selectedGameId && (
-              <div className={style.gameDetails}>
-                <div className={style.detailsInfo}>
-                  {gameInfo.statusCode > 3 ? (
-                    <div>- Матч не начался -</div>
-                  ) : (
-                    <div>
-                      <GameDetails gameId={gameInfo.gamePk} />
-                    </div>
-                  )}
-                </div>
+              <div>
+                {gameInfo.statusCode > 3 ? (
+                  <div className={style.noGameDetails}>- Матч не начался -</div>
+                ) : (
+                  <GameDetails gameId={gameInfo.gamePk} />
+                )}
               </div>
             )}
           </div>
