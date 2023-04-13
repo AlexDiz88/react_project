@@ -44,7 +44,7 @@ function GameList({ date }: Props): JSX.Element {
       {isError ? (
         <div>Ошибка загрузки данных. Перезагрузите страницу</div>
       ) : noGamesDay ? (
-        <div>На указанную дату матчей нет</div>
+        <div className={style.noGamesInfo}>На указанную дату матчей нет</div>
       ) : isLoaded ? (
         gameLinks.map((link) => (
           <div key={link}>

@@ -2,12 +2,14 @@ import React from 'react';
 import style from './DateButton.module.css';
 
 interface Props {
+  name: string;
   date: Date;
   onClick: (dateOnBtn: Date) => void;
   isSelected: boolean;
 }
 
-function DateButton({ date, onClick, isSelected }: Props): JSX.Element {
+// eslint-disable-next-line object-curly-newline
+function DateButton({ name, date, onClick, isSelected }: Props): JSX.Element {
   const handleClick = (): void => {
     onClick(date);
   };
@@ -63,7 +65,7 @@ function DateButton({ date, onClick, isSelected }: Props): JSX.Element {
   return (
     <div>
       <button type="button" className={buttonClassName} onClick={handleClick}>
-        {dateOnButton}
+        {isSelected ? dateOnButton : name}
       </button>
     </div>
   );

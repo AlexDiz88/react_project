@@ -9,6 +9,7 @@
   border-left: 3px solid rgba(14, 255, 223, 0);
   border-right: 3px solid rgba(14, 255, 223, 0);
   box-shadow: 1px 1px 8px black;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -23,4 +24,22 @@
   border-left: 3px solid rgb(90, 233, 46);
   border-right: 3px solid rgb(90, 233, 46);
   box-shadow: none;
+}
+
+.selected {
+  background-color: rgb(94, 94, 94);
+  color: whitesmoke;
+  border: 1px solid black;
+  cursor: auto;
+}
+
+.selected:hover {
+  background-color: rgb(94, 94, 94);
+  color: whitesmoke;
+  border: 1px solid black;
+  cursor: auto;
+}
+
+.selected:active {
+  box-shadow: 1px 1px 8px black;
 }

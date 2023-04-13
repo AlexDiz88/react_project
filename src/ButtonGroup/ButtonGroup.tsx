@@ -19,9 +19,24 @@ function ButtonGroup({ selectedDate, onDateChange }: Props): JSX.Element {
 
   return (
     <div className={style.wrapper}>
-      <DateButton date={dayBefore} onClick={handleButtonClick} isSelected={false} />
-      <DateButton date={selectedDate} onClick={handleButtonClick} isSelected />
-      <DateButton date={dayAfter} onClick={handleButtonClick} isSelected={false} />
+      <DateButton
+        name="Previous day"
+        date={dayBefore}
+        onClick={handleButtonClick}
+        isSelected={false}
+      />
+      <DateButton
+        name={selectedDate.toString()}
+        date={selectedDate}
+        onClick={handleButtonClick}
+        isSelected
+      />
+      <DateButton
+        name="Next day"
+        date={dayAfter}
+        onClick={handleButtonClick}
+        isSelected={false}
+      />
     </div>
   );
 }

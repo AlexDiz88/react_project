@@ -16,3 +16,9 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.noGamesInfo {
+  padding: 15px 0;
+  font-size: 25px;
+  font-weight: bold;
+}
