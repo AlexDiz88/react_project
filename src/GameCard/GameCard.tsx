@@ -35,6 +35,7 @@ function GameCard({ gameLink }: Props): JSX.Element {
       const response = await fetch(`https://statsapi.web.nhl.com${gameLink}`);
       const gameData = await response.json();
       const gameStatus = GameStatusParser(gameData);
+
       const game: GameInfo = {
         gamePk: gameData.gamePk,
         homeTeam: gameData.liveData.linescore.teams.home.team.name,

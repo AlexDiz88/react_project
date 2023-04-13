@@ -14,7 +14,7 @@ function GameStatusParser(gameData: any): Status {
     gameData.liveData.linescore;
   const actualStatus = gameData.gameData.status.detailedState;
 
-  if (actualStatus === 'Scheduled' || actualStatus === 'Pre Game') {
+  if (actualStatus === 'Scheduled' || actualStatus === 'Pre-Game') {
     title = StatusDateParser(gameData.gameData.datetime.dateTime);
     code = 4;
     style = 'statusTitleScheduled';
