@@ -1,12 +1,14 @@
 .wrapper {
   width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .table {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  min-width: 567px;
+  min-width: 300px;
   max-width: 1153px;
 }
 
@@ -24,6 +26,7 @@
 }
 
 .divisionTitle {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,6 +44,7 @@
   font-size: 19px;
   border-bottom: 1px solid rgb(133, 133, 133);
   height: 40px;
+  width: 100%;
 }
 .tableRow:hover {
   background-color: rgb(129, 230, 216);
@@ -138,4 +142,26 @@ span.teamName {
 .footnote {
   padding-top: 20px;
   font-size: 14px;
+}
+
+@media screen and (max-width: 610px) {
+  .table {
+    width: 350px;
+  }
+  .tableRow {
+    font-size: 18px;
+  }
+  .divisionWrapper {
+    width: 350px;
+  }
+
+  .divisionTitle {
+    font-size: 16px;
+  }
+  .gamesPlayedStatInfo {
+    margin-left: -18px;
+  }
+  .teamPointsStatInfo {
+    padding-left: 30px;
+  }
 }

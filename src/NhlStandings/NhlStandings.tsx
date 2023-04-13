@@ -48,7 +48,7 @@ function NhlStandings(): JSX.Element {
       setIsLoaded(true);
     }
     getStandings();
-  }, []);
+  });
 
   return (
     <div className={style.wrapper}>
@@ -61,13 +61,23 @@ function NhlStandings(): JSX.Element {
                   Division: {division.name}, {division.conference} Conference
                 </span>
                 <div className={style.statsInfo}>
-                  <span className={style.teamStatInfo}> </span>
-                  <span className={style.gamesPlayedStatInfo}>И</span>
-                  <span className={style.teamWinsStatInfo}>В</span>
-                  <span className={style.teamWinsOTStatInfo}>ОТ</span>
-                  <span className={style.teamLossesStatInfo}>П</span>
-                  <span className={style.teamGoalsStatInfo}>Р/Ш</span>
-                  <span className={style.teamPointsStatInfo}>О</span>
+                  {window.innerWidth < 610 ? (
+                    <>
+                      <span className={style.teamStatInfo}> </span>
+                      <span className={style.gamesPlayedStatInfo}>И</span>
+                      <span className={style.teamPointsStatInfo}>О</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className={style.teamStatInfo}> </span>
+                      <span className={style.gamesPlayedStatInfo}>И</span>
+                      <span className={style.teamWinsStatInfo}>В</span>
+                      <span className={style.teamWinsOTStatInfo}>ОТ</span>
+                      <span className={style.teamLossesStatInfo}>П</span>
+                      <span className={style.teamGoalsStatInfo}>Р/Ш</span>
+                      <span className={style.teamPointsStatInfo}>О</span>
+                    </>
+                  )}
                 </div>
                 {division.teams.map((team) => (
                   <div key={team.name} className={style.tableRow}>
@@ -79,17 +89,26 @@ function NhlStandings(): JSX.Element {
                       />
                       {team.name}
                     </span>
-                    <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
-                    <span className={style.teamWins}>{team.wins}</span>
-                    <span className={style.teamWinsOT}>{team.winsOT}</span>
-                    <span className={style.teamLosses}>{team.losses}</span>
-                    <span className={style.teamGoalsScored}>
-                      {team.goalsScored}-
-                    </span>
-                    <span className={style.teamGoalsAgainst}>
-                      {team.goalsAgainst}
-                    </span>
-                    <span className={style.teamPoints}>{team.points}</span>
+                    {window.innerWidth < 610 ? (
+                      <>
+                        <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
+                        <span className={style.teamPoints}>{team.points}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className={style.gamesPlayed}>{team.gamesPlayed}</span>
+                        <span className={style.teamWins}>{team.wins}</span>
+                        <span className={style.teamWinsOT}>{team.winsOT}</span>
+                        <span className={style.teamLosses}>{team.losses}</span>
+                        <span className={style.teamGoalsScored}>
+                          {team.goalsScored}-
+                        </span>
+                        <span className={style.teamGoalsAgainst}>
+                          {team.goalsAgainst}
+                        </span>
+                        <span className={style.teamPoints}>{team.points}</span>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
