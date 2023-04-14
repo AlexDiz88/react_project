@@ -145,21 +145,24 @@ span.teamName {
 }
 
 @media screen and (max-width: 610px) {
+  .wrapper {
+    padding: 10px;
+  }
   .table {
-    width: 350px;
+    width: 340px;
   }
   .tableRow {
     font-size: 18px;
   }
   .divisionWrapper {
-    width: 350px;
+    width: 340px;
   }
 
   .divisionTitle {
     font-size: 16px;
   }
   .gamesPlayedStatInfo {
-    margin-left: -18px;
+    margin-left: -27px;
   }
   .teamPointsStatInfo {
     padding-left: 30px;

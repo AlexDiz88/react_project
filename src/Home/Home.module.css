@@ -1,34 +1,34 @@
-.pageWrapper {
+.wrapper {
   width: 100%;
   box-sizing: border-box;
 }
 
 @media only screen and (min-width: 1241px) {
-  .pageWrapper {
+  .wrapper {
     padding: 0px 30px 50px 30px;
   }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1240px) {
-  .pageWrapper {
+  .wrapper {
     padding: 0px 25px 50px 25px;
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .pageWrapper {
+  .wrapper {
     padding: 0px 20px 50px 20px;
   }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .pageWrapper {
+  .wrapper {
     padding: 0px 15px 50px 15px;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .pageWrapper {
+  .wrapper {
     padding: 0px 5px 50px 5px;
   }
 }

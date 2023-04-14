@@ -36,7 +36,7 @@
   border: 1px solid black;
   z-index: 10;
   animation-name: unfold;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 
@@ -47,7 +47,7 @@
   /* justify-content: center; */
   text-align: center;
   animation-name: fade-in;
-  animation-duration: 1s;
+  animation-duration: 0.1s;
   animation-fill-mode: forwards;
   animation-delay: 0.15s;
   opacity: 0;
@@ -68,5 +68,11 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .detailsInfo {
+    font-size: 12px;
   }
 }

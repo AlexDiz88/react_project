@@ -4,7 +4,7 @@ import style from './NhlPlayoffs.module.css';
 function NhlPlayoffs(): JSX.Element {
   return (
     <div className={style.wrapper}>
-      <h1>Плей-офф стартует 17 апреля 2023</h1>
+      <h1>Playoffs start April 17, 2023</h1>
     </div>
   );
 }

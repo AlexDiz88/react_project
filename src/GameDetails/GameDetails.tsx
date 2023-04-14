@@ -113,7 +113,7 @@ function GameDetails(props: Props): JSX.Element {
           </div>
         </div>
       ) : (
-        <div>Данные загружаются...</div>
+        <div> </div>
       )}
     </div>
   );
