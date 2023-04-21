@@ -6,11 +6,6 @@
   background-color: rgb(213, 226, 225);
 }
 
-.teamLogo {
-  width: 60px;
-  height: 60px;
-}
-
 .serieStatus {
   font-weight: bold;
   background-color: rgb(228, 190, 24);
@@ -37,4 +32,69 @@
 
 .teamTitle {
   font-weight: bold;
+}
+
+@media only screen and (min-width: 921px) {
+  .teamLogo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media only screen and (min-width: 831px) and (max-width: 920px) {
+  .teamLogo {
+    width: 55px;
+    height: 55px;
+  }
+  .serieStatus {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 731px) and (max-width: 830px) {
+  .teamLogo {
+    width: 50px;
+    height: 50px;
+  }
+  .serieStatus {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 611px) and (max-width: 730px) {
+  .teamLogo {
+    width: 45px;
+    height: 45px;
+  }
+  .serieStatus {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .teamLogo {
+    width: 40px;
+    height: 40px;
+  }
+  .serieStatus {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 545px) {
+  .teamLogo {
+    width: 50px;
+    height: 50px;
+  }
+  .serieStatus {
+    max-width: 55px;
+    font-size: 11px;
+    height: 18px;
+  }
+  .game {
+    flex-direction: column;
+  }
+  .teamTitle {
+    display: none;
+  }
 }

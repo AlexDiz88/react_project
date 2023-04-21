@@ -11,7 +11,7 @@
   justify-content: space-between;
 }
 .secondRound {
-  padding: 0 10px;
+  padding: 0 5px;
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -19,16 +19,22 @@
   justify-content: space-evenly;
   /* background-color: rgb(187, 152, 123); */
 }
-.conferenceFinal {
-  padding: 0 10px;
+.confFinalWest {
+  padding: 0px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: rgb(123, 135, 187); */
+}
+.confFinalEast {
+  padding: 0px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .stanleyCupFinal {
-  padding: 0 10px;
+  padding: 0px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -39,4 +45,60 @@
 
 .cupImg {
   padding-bottom: 25px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 981px) {
+  .confFinalEast {
+    margin: 0 10px 0 10px;
+  }
+  .confFinalWest {
+    margin: 0 10px 0 10px;
+  }
+  .secondRound {
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 921px) and (max-width: 980px) {
+  .confFinalEast {
+    margin: 0 0px 0 0;
+  }
+  .confFinalWest {
+    margin: 0 0 0 0px;
+  }
+}
+
+@media only screen and (min-width: 831px) and (max-width: 920px) {
+  .confFinalEast {
+    margin: 0 -10px 0 0;
+  }
+  .confFinalWest {
+    margin: 0 0 0 -10px;
+  }
+}
+
+@media only screen and (min-width: 731px) and (max-width: 830px) {
+  .confFinalEast {
+    margin: 0 -25px 0 0;
+  }
+  .confFinalWest {
+    margin: 0 0 0 -25px;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .confFinalEast {
+    margin: 0 -50px 0 0;
+  }
+  .confFinalWest {
+    margin: 0 0 0 -50px;
+  }
+}
+
+@media only screen and (max-width: 545px) {
+  .firstRound {
+    height: fit-content;
+	 margin-bottom: 5px;
+  }
 }

@@ -36,7 +36,6 @@ function GameDetails(props: Props): JSX.Element {
       );
       const data = await response.json();
       // console.log(data);
-
       const { allPlays } = data.liveData.plays;
       const { scoringPlays } = data.liveData.plays;
       const homeTeam = data.gameData.teams.home.name;

@@ -49,7 +49,7 @@ function NhlStandings(): JSX.Element {
       setIsLoaded(true);
     }
     getStandings();
-  }, []);
+  }, [standingsData]);
 
   return (
     <div className={style.wrapper}>

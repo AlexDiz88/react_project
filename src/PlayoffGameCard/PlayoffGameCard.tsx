@@ -8,7 +8,7 @@ interface PlayoffSerieInfo {
 function PlayoffGameCard({ game }: PlayoffSerieInfo): JSX.Element {
   //   console.log(game);
   return (
-    <div>
+    <span>
       {game.currentGame.seriesSummary.gameLabel !== '' ? (
         <div className={style.wrapper}>
           <div className={style.game}>
@@ -61,7 +61,7 @@ function PlayoffGameCard({ game }: PlayoffSerieInfo): JSX.Element {
           </div>
         </div>
       )}
-    </div>
+    </span>
   );
 }
 
