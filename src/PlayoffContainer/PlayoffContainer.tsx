@@ -51,30 +51,13 @@ function PlayoffContainer(): JSX.Element {
         <div className={style.wrapper}>
           <div className={style.title}>NHL Playoffs 2023</div>
           <div className={style.stageWrapper}>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer stageStyle="firstRound" series={series1} />
-            </span>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer stageStyle="secondRound" series={series3} />
-            </span>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer stageStyle="confFinalWest" series={series5} />
-            </span>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer
-                stageStyle="stanleyCupFinal"
-                series={series7}
-              />
-            </span>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer stageStyle="confFinalEast" series={series6} />
-            </span>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer stageStyle="secondRound" series={series4} />
-            </span>
-            <span className={style.extraWrapper}>
-              <PlayoffStagesContainer stageStyle="firstRound" series={series2} />
-            </span>
+            <PlayoffStagesContainer stageStyle="firstRound" series={series1} />
+            <PlayoffStagesContainer stageStyle="secondRound" series={series3} />
+            <PlayoffStagesContainer stageStyle="confFinalWest" series={series5} />
+            <PlayoffStagesContainer stageStyle="stanleyCupFinal" series={series7} />
+            <PlayoffStagesContainer stageStyle="confFinalEast" series={series6} />
+            <PlayoffStagesContainer stageStyle="secondRound" series={series4} />
+            <PlayoffStagesContainer stageStyle="firstRound" series={series2} />
           </div>
         </div>
       ) : (
