@@ -14,7 +14,6 @@ function GameList({ date }: Props): JSX.Element {
   const [noGamesDay, setNoGamesDay] = useState<boolean>(false);
   const formattedDate = DateParser(date);
 
-  // TODO решить проблему с днями без матчей
   useEffect(() => {
     async function getGameLinksByDate(): Promise<void> {
       try {
@@ -22,6 +21,7 @@ function GameList({ date }: Props): JSX.Element {
           `https://statsapi.web.nhl.com/api/v1/schedule?date=${formattedDate}`
         );
         const data = await response.json();
+
         if (data.dates.length === 0) {
           setNoGamesDay(true);
           setGameLinks([]);
@@ -37,7 +37,7 @@ function GameList({ date }: Props): JSX.Element {
       }
     }
     getGameLinksByDate();
-  }, [formattedDate, date, noGamesDay]);
+  }, [formattedDate]);
 
   return (
     <div className={style.gameListWrapper}>

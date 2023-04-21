@@ -26,6 +26,7 @@ function NhlStandings(): JSX.Element {
     async function getStandings(): Promise<void> {
       const response = await fetch('https://statsapi.web.nhl.com/api/v1/standings');
       const completeData = await response.json();
+
       const divisions = completeData.records.map(
         (divisionRecord: any): Division => ({
           name: divisionRecord.division.name,
@@ -48,7 +49,7 @@ function NhlStandings(): JSX.Element {
       setIsLoaded(true);
     }
     getStandings();
-  });
+  }, []);
 
   return (
     <div className={style.wrapper}>

@@ -1,0 +1,29 @@
+.wrapper {
+  max-width: fit-content;
+  margin: 10px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.stageWrapper {
+  max-width: fit-content;
+  padding: 10px 5px 0 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: rgba(185, 197, 196, 0.404); */
+  background: rgb(174, 238, 235);
+  background: linear-gradient(
+    0deg,
+    rgba(181, 234, 255, 0.616) 0%,
+    rgba(0, 0, 0, 0.637) 50%,
+    rgba(181, 234, 255, 0.616) 100%
+  );
+  box-shadow: 3px 7px 10px black;
+  border: 2px solid rgb(68, 68, 68);
+  border-radius: 15px;
+}
