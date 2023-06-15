@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "./static/css/main.0436b07b.css",
-    "main.js": "./static/js/main.4a85b225.js",
+    "main.css": "./static/css/main.f4711f51.css",
+    "main.js": "./static/js/main.7014e05a.js",
     "static/media/Logo-NHL.svg": "./static/media/Logo-NHL.d7f86c3eac1687a571810a4c004e049d.svg",
     "index.html": "./index.html",
-    "main.0436b07b.css.map": "./static/css/main.0436b07b.css.map",
-    "main.4a85b225.js.map": "./static/js/main.4a85b225.js.map"
+    "main.f4711f51.css.map": "./static/css/main.f4711f51.css.map",
+    "main.7014e05a.js.map": "./static/js/main.7014e05a.js.map"
   },
   "entrypoints": [
-    "static/css/main.0436b07b.css",
-    "static/js/main.4a85b225.js"
+    "static/css/main.f4711f51.css",
+    "static/js/main.7014e05a.js"
   ]
 }
