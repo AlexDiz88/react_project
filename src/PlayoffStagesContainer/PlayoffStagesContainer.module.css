@@ -43,9 +43,22 @@
   /* background-color: aquamarine; */
 }
 
-.cupImg {
-  padding-bottom: 25px;
+.title{
+	font-weight: bold;
+}
+
+.teamLogo{
+	width: 70%;
+	height: 70%;
+}
+
+.cupImgWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  margin: 10px;
 }
 
 @media only screen and (min-width: 981px) {

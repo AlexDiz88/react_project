@@ -4,7 +4,8 @@ import GameList from '../GameList/GameList';
 import style from './GameListContainer.module.css';
 
 function GameListContainer(): JSX.Element {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+//   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date(2023, 2, 17));
 
   const handleDateChange = (date: Date): void => {
     setSelectedDate(date);

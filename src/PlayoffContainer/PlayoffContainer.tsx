@@ -32,11 +32,11 @@ function PlayoffContainer(): JSX.Element {
         data.rounds[0].series[3],
       ]);
 
-      setSeries3([data.rounds[1].series[0], data.rounds[1].series[1]]);
-      setSeries4([data.rounds[1].series[2], data.rounds[1].series[3]]);
+      setSeries3([data.rounds[1].series[3], data.rounds[1].series[2]]);
+      setSeries4([data.rounds[1].series[0], data.rounds[1].series[1]]);
 
-      setSeries5([data.rounds[2].series[0]]);
-      setSeries6([data.rounds[2].series[1]]);
+      setSeries5([data.rounds[2].series[1]]);
+      setSeries6([data.rounds[2].series[0]]);
 
       setSeries7([data.rounds[3].series[0]]);
       //  console.log(series2);
